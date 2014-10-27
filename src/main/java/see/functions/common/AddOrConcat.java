@@ -8,6 +8,8 @@ import javax.annotation.Nonnull;
 import java.math.BigDecimal;
 import java.util.List;
 
+import com.google.common.collect.Lists;
+
 public class AddOrConcat implements VarArgFunction<Object, Object> {
 
     private final Sum sum = new Sum();
@@ -15,6 +17,7 @@ public class AddOrConcat implements VarArgFunction<Object, Object> {
 
     @Override
     public Object apply(@Nonnull List<Object> input) {
+    	input = Lists.newArrayList(input);
         Object firstElement = input.get(0);
         if(firstElement == null){
             throw new NullPointerException();
